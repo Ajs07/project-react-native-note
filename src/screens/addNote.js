@@ -58,10 +58,11 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'center',
       padding: 20,
+      backgroundColor: '#f5f5f5'
     },
     pageTitle: {
       marginTop: 20,
-      fontSize: 20,
+      fontSize: 24,
       fontWeight: '700',
       textAlign: 'center',
       color: '#203239',
