@@ -41,18 +41,18 @@ const App = () => {
     Kita bisa menganggap note paling belakang memiliki id terbesar karena note di noteList akan selalu diurutkan berdasarkan id. Hal ini dilakukan agar tidak ada index note yang duplikat karena index ini akan digunakan untuk rendering list di home.js.
     Setelah itu kita akan menambahkan note ke dalam noteList dengan function setNoteList. */
   const addNote = (title, desc) => {
-    const id =
-      noteList.length > 0 ? noteList[noteList.length - 1].id + 1 : 1
-  
-    setNoteList([
-      noteList,
-      {
-        id,
-        title: title,
-        desc: desc,
-      },
-    ])
-  }
+  const id =
+    noteList.length > 0 ? noteList[noteList.length - 1].id + 1 : 1
+
+  setNoteList([
+    ...noteList,
+    {
+      id,
+      title: title,
+      desc: desc,
+    },
+  ])
+}
 
   return (
     <CurrentPageWidget
