@@ -53,28 +53,34 @@ const Home = ({ noteList, setCurrentPage }) => (
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
+    flex:1,
     flexDirection: 'column',
     justifyContent: 'center',
-    padding: 20,
+    padding: 20,backgroundColor: '#f5f5f5'
   },
   card: {
-    padding: 10,
-    marginVertical: 15,
-    borderColor: '#DDD',
-    borderWidth: 2,
+    padding: 15,
+    marginVertical: 8,
     borderRadius: 5,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   },
   cardTitle: {
     fontWeight: '600',
     color: '#203239',
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 5,
   },
   buttons: {
-    marginTop: 10,
+    marginTop: 20,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
 })
 
