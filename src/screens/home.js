@@ -3,10 +3,10 @@ import { FlatList, StyleSheet, View, Text } from 'react-native'
 import CustomButton from '../components/customButton'
 
 // Tambahkan "setCurrentPage" sebagai sebuah prop
-const NoteCard = ({ item, setCurrentPage }) => (
+const NoteCard = ({ item, setCurrentPage, setCurrentNoteId,deleteNote }) => (
   <View style={styles.card}>
     <Text style={styles.cardTitle}>{item.title}</Text>
-    <Text>{item.desc}</Text>
+    <Text style={styles.cardDesc}>{item.desc}</Text>
     <View style={styles.buttons}>
       <CustomButton
         backgroundColor="#FFC300"
@@ -14,7 +14,9 @@ const NoteCard = ({ item, setCurrentPage }) => (
         text="Ubah"
         fontSize={12}
         width={100}
-        onPress={() => {setCurrentPage('edit')}}
+        onPress={() => {
+          setCurrentNoteId(item.id)
+          setCurrentPage('edit')}}
       />
       <CustomButton
         backgroundColor="#D82148"
@@ -29,7 +31,7 @@ const NoteCard = ({ item, setCurrentPage }) => (
 )
 
 // Tambahkan "setCurrentPage" sebagai prop
-const Home = ({ noteList, setCurrentPage }) => (
+const Home = ({ noteList, setCurrentPage, setCurrentNoteId }) => (
   <View style={styles.container}>
     <CustomButton
       backgroundColor="#DDD"
@@ -74,6 +76,11 @@ const styles = StyleSheet.create({
     color: '#203239',
     fontSize: 18,
     marginBottom: 5,
+  },  
+  cardDesc: {
+    fontSize: 14,
+    color: '#555',
+    marginTop: 5,
   },
   buttons: {
     marginTop: 20,
