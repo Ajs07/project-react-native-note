@@ -3,20 +3,22 @@ import Home from './src/screens/home'
 import AddNote from './src/screens/addNote'
 import EditNote from './src/screens/editNote'
 
-const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote }) => {
+const CurrentPageWidget = ({ currentPage, noteList, setCurrentPage, addNote, editNote, deleteNote, currentNoteId, setCurrentNoteId }) => {
   switch (currentPage) {
     case 'home':
       return (
         <Home
           noteList={noteList}
           setCurrentPage={setCurrentPage}
+          setCurrentNoteId={setCurrentNoteId}
+          // deleteNote={deleteNote}
         />
       )
     case 'add':
       // Untuk membuat button Kembali ke Home bekerja, ubah code di dalam CurrentPageWidget pada App.js seperti di bawah untuk meneruskan setCurrentPage ke addNote.js.
       return <AddNote setCurrentPage={setCurrentPage} addNote={addNote}/>
     case 'edit':
-      return <EditNote />
+      return <EditNote setCurrentPage={setCurrentPage} noteList={noteList} setNoteList={editNote} currentNoteId={currentNoteId} />
     default:
       return <Home />
   }
@@ -54,12 +56,25 @@ const App = () => {
   ])
 }
 
+  const editNote = (updateNotes) => {
+    setNoteList(updateNotes)
+  }
+
+  // const deleteNote = (id) => {
+  //   const filteredNotes = noteList.filter(note => note.id !== id)
+  //   setNoteList(filteredNotes)
+  // }
+
   return (
     <CurrentPageWidget
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
       noteList={noteList}
       addNote={addNote}
+      editNote={editNote}
+      //deleteNote={deleteNote}
+      currentNoteId={currentNoteId}
+      setCurrentNoteId={setCurrentNoteId}
     />
   )
 }
